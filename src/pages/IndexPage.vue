@@ -1,7 +1,5 @@
 <template>
-  <q-page class="row items-center justify-evenly">
-    <game-play />
-  </q-page>
+  <game-play />
 </template>
 
 <script setup lang="ts">

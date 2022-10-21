@@ -1,5 +1,5 @@
 <template>
-  <div class="column justify-start items-center">
+  <q-page class="column justify-start items-center q-pa-lg q-gutter-lg">
     <div class="row col-10">
       <q-card class="door-card row justify-evenly items-center"
               v-for="door in doorValues"
@@ -43,7 +43,7 @@
         </q-btn>
       </div>
     </div>
-  </div>
+  </q-page>
 </template>
 
 <script setup lang="ts">
