@@ -70,9 +70,9 @@ function doorClass(door : Door) : string {
   & svg { height: 100%; }
 }
 .chosen {
-  box-shadow: 0px 0px 5px 5px lightsteelblue;
+  box-shadow: 0 0 5px 5px lightsteelblue;
 }
 .final {
-  box-shadow: 0px 0px 5px 5px gold;
+  box-shadow: 0 0 5px 5px gold;
 }
 </style>
