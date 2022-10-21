@@ -1,21 +1,24 @@
+<!-- Alternate game play approach
+ - Proposed by Susanne Vejdemo
+ - When you enter the game show, one door has already been chosen for you,
+ - and a "goat" door has already been opened for you.
+ - You are facing the choice of switching the chosen door or not.
+ -->
+
 <template>
   <q-page class="column justify-start items-center q-pa-lg q-gutter-lg">
     <div class="text col-1">
-      Welcome to the classic Monty Hall Problem setup. You are in a game show,
-      and get to pick one of three doors. One has a car for you to win,
-      two doors have goats signifying a loss. Once you have chosen, another door
-      is opened and reveals a goat - and you can decide whether to stick with
-      your original choice, or to swap door.
+      In this alternate setup, your door has already been chosen for you.
+      You get to choose whether to stay or swap as usual.
     </div>
     <div class="row col-10">
       <q-card class="door-card row justify-evenly items-center"
               v-for="door in doorValues"
               :key="door"
-              :class="doorClass(door)"
-              @click="game.chooseDoor(door)">
+              :class="doorClass(door)">
         <Transition mode="out-in"
-        enter-active-class="animated flipInY"
-        leave-active-class="animated flipOutY">
+                    enter-active-class="animated flipInY"
+                    leave-active-class="animated flipOutY">
           <q-card-section v-if="game.gameState.openDoors.includes(door)">
             <svg viewBox="0 0 50 50" width="100%" height="100%">
               <text x="0" y="45">{{game.gameState.winningDoor === door ? '🚗' : '🐐'}}</text>
@@ -46,7 +49,7 @@
           Swapping would have {{game.gameState.chosenDoor !== game.gameState.winningDoor ? "won" : "lost"}} and
           staying would have {{game.gameState.chosenDoor === game.gameState.winningDoor ? "won" : "lost"}}.
         </div>
-        <q-btn @click="game.setupGame" class="col-4">
+        <q-btn @click="alternateSetup" class="col-4">
           <q-icon left name="restart_alt" /> New Game?
         </q-btn>
       </div>
@@ -60,7 +63,13 @@ import { useGameStore, GamePhase } from 'stores/GameState';
 
 const game = useGameStore();
 
-game.setupGame();
+function alternateSetup() {
+  game.setupGame();
+  game.chooseDoor(Door.Left);
+}
+
+alternateSetup();
+
 function doorClass(door : Door) : string {
   if(door == game.gameState.finalDoor) return 'final';
   if(door == game.gameState.chosenDoor) return 'chosen';

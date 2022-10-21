@@ -15,6 +15,11 @@
           Monty Hall Simulator
         </q-toolbar-title>
 
+        <q-tabs>
+          <q-route-tab shrink exact to="/" label="Main Game" />
+          <q-route-tab shrink exact to="/alternate" label="Alternate Game" />
+          <q-route-tab shrink exact to="/batch" label="Batch Simulation" />
+        </q-tabs>
       </q-toolbar>
     </q-header>
 

@@ -1,5 +1,10 @@
 {
   "@quasar/qmarkdown": {
     "import_md": true
+  },
+  "ssg": {
+    "scripts": true,
+    "IDE": true,
+    "inlineCriticalCss": true
   }
 }
