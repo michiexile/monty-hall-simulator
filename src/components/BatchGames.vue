@@ -87,15 +87,16 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import { useGameStore } from "stores/GameState";
-import { Door, chooseDoor, doorValues } from 'components/models';
+import { ref } from 'vue';
+import { useGameStore } from 'stores/GameState';
+import { Door } from 'components/models';
+import { QAjaxBar } from 'quasar';
 
 const game = useGameStore();
-const panel = ref("standard");
+const panel = ref('standard');
 const openStrategy = ref({min: 33, max: 66});
 const swapStrategy = ref(50);
-const bar = ref(null);
+const bar = ref(null as QAjaxBar | null);
 
 function pickDoor() : Door {
   const
